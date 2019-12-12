@@ -1,0 +1,67 @@
+<div class="home">
+    <div class="home-div">
+        <div class="home-div-inner">
+            <h3>
+                Subjects Statistics
+            </h3>
+            <div>
+                <canvas baseChart
+                    *ngIf="barData.length > 0"
+                    [datasets]="barData"
+                    [labels]="barLabels"
+                    [options]="barOptions"
+                    [legend]="barLegend"
+                    [chartType]="barType">
+                </canvas>
+            </div>
+        </div>
+    </div>
+    <div class="home-div">
+        <div class="home-div-inner">
+            <h3>
+                Most Used Words
+            </h3>
+            <div class="overflow">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th></th>
+                            <th>Word</th>
+                            <th>Count</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let word of mostUsedWords; let i = index">
+                            <td>{{i + 1}}</td>
+                            <td>{{word.word}}</td>
+                            <td>{{word.count}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="home-div-inner">
+            <h3>
+                Most Active Players
+            </h3>
+            <div class="overflow">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th></th>
+                            <th>Player Id</th>
+                            <th>Count</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let word of mostActivePlayers; let i = index">
+                            <td>{{i + 1}}</td>
+                            <td>{{word.player}}</td>
+                            <td>{{word.count}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

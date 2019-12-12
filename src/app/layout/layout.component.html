@@ -1,0 +1,49 @@
+<div class="layout">
+    <div class="layout-wrapper">
+        <div class="layout-wrapper-menu">       
+            <div class="brand">
+                <a href="#">
+                    <img src="/assets/img/logo.png">
+                </a>
+            </div> 
+            <div class="menu">
+                <div class="menu-group">
+                    <h5>
+                        Menu
+                    </h5>
+                    <ul>
+                        <li>
+                            <a routerLink="/home">
+                                <i class="icon fas fa-tachometer-alt"></i>
+                                Dashboard
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!--
+                <div class="menu-group">
+                    <h5>
+                        Reportes
+                    </h5>
+                    <ul>
+                        <li>
+                            <a [routerLink]="['/reports','custom']">
+                                <i class="icon fas fa-chart-bar"></i>
+                                Reporte Personalizado
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                -->
+            </div>
+        </div>
+        <div class="layout-wrapper-content">
+            <div class="layout-wrapper-content-header">
+                <eva-header title="Dashboard"></eva-header>
+            </div>
+            <div class="layout-wrapper-content-outlet">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>

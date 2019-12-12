@@ -1,0 +1,15 @@
+@import '../../../assets/scss/variables.scss';
+
+.header {
+    padding: 20px;
+    letter-spacing: 5px;
+    border-bottom: 1px solid $grey140;
+
+    &-title {
+        text-transform: uppercase;
+        color: $grey140;
+        margin: 0;
+        padding: 0;
+        display: inline-block;
+    }
+}

@@ -1,0 +1,19 @@
+<div class="nps">
+    <div class="nps-wrapper">
+        <div class="nps-red" [style.width.%]="redPortion.percent" [style.left.%]="redPortion.position">
+            <span>
+                {{redPortion.text}}
+            </span>
+        </div>
+        <div class="nps-yellow" [style.width.%]="yellowPortion.percent" [style.left.%]="yellowPortion.position">
+            <span>
+                {{yellowPortion.text}}
+            </span>
+        </div>
+        <div class="nps-green" [style.width.%]="greenPortion.percent" [style.left.%]="greenPortion.position">
+            <span>
+                {{greenPortion.text}}
+            </span>
+        </div>
+    </div>
+</div>
