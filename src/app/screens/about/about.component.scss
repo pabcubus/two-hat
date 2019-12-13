@@ -1,0 +1,38 @@
+@import '../../../assets/scss/global-classes.scss';
+
+.about {
+    padding-top: 5%;
+    &-card {
+        margin: 0 auto 0;
+        width: 50%;
+
+        .list-group-item:first-child {
+            padding-top: 70px;
+            padding-bottom: 70px;
+        }
+
+        &-list {
+            width: 100%;
+
+            .card {
+                &-title {
+                    text-align: center;
+                    margin-bottom: 20px;
+                }
+                &-photo {
+                    text-align: center;
+
+                    img {
+                        width: 300px;
+                    }
+                }
+                &-links {
+                    a {
+                        padding: 0 5px;
+                        font-size: 30px;
+                    }
+                }
+            }
+        }
+    }
+}

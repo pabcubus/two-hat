@@ -9,9 +9,11 @@ import { QRCodeModule } from 'angular2-qrcode';
 import { ComponentsModule } from '../components/components.module';
 
 import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
 
 const components: Array<any> = [
   HomeComponent,
+  AboutComponent,
 ];
 
 @NgModule({

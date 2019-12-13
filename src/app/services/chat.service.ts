@@ -16,14 +16,19 @@ export class ChatService {
 
   getAllChats(): Observable<any> {
     return new Observable(obs => {
-      this.http.get('../../assets/data/data.json', {responseType: 'text'}).subscribe((data: string) => {
-        const jsonString: string = data.replace(/(\r\n|\n|\r)/gm, ',');
-        const res: any = JSON.parse(`[${jsonString.substring(0, jsonString.length - 1)}]`);
-        this.chats = res;
-        
-        obs.next(res);
+      if (!this.chats.length) {
+        this.http.get('../../assets/data/data.json', {responseType: 'text'}).subscribe((data: string) => {
+          const jsonString: string = data.replace(/(\r\n|\n|\r)/gm, ',');
+          const res: any = JSON.parse(`[${jsonString.substring(0, jsonString.length - 1)}]`);
+          this.chats = res;
+          
+          obs.next(res);
+          obs.complete();
+        });
+      } else {
+        obs.next(this.chats);
         obs.complete();
-      });
+      }
     });
   }
 
@@ -48,13 +53,23 @@ export class ChatService {
         });
       });
 
-      mostUsedWords = _.orderBy(mostUsedWords.filter(w => w.count > 10), ['count'], ['desc']);
+      mostUsedWords = _.orderBy(mostUsedWords.filter(w => w.count > 10), ['count'], ['desc']).slice(0, 20);
 
       let playersCount = _.groupBy(data, 'player');
       mostActivePlayers = _.orderBy(Object.keys(playersCount)
-                                .map(key => ({player: key, count: playersCount[key].length})), ['count'], ['desc']);
+                                .map(key => ({player: key, count: playersCount[key].length})), ['count'], ['desc'])
+                                .slice(0, 20);
 
       obs.next({mostUsedWords, mostActivePlayers});
+      obs.complete();
+    });
+  }
+
+  processAmountData(data: any): Observable<any> {
+    return new Observable(obs => {
+      const playersAmount: number = _.uniqBy(data, 'player').length;
+
+      obs.next({playersAmount, messagesAmount: data.length});
       obs.complete();
     });
   }

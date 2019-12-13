@@ -33,6 +33,8 @@ export class HomeComponent implements OnInit {
 
   public mostUsedWords: Array<{word: string, count: number}> = [];
   public mostActivePlayers: Array<{player: string, count: number}> = [];
+  public playersAmount: number = 0;
+  public messagesAmount: number = 0;
 
   constructor(
     private uiService: UiService,
@@ -50,6 +52,7 @@ export class HomeComponent implements OnInit {
         this.data = res;
         this.processData();
         this.processWordsData();
+        this.processAmountData();
       });
   }
 
@@ -74,6 +77,14 @@ export class HomeComponent implements OnInit {
       (res: any) => {
         this.mostUsedWords = res.mostUsedWords;
         this.mostActivePlayers = res.mostActivePlayers;
+      });
+  }
+
+  private processAmountData(): void {     
+    this.chatService.processAmountData(this.data).subscribe(
+      (res: any) => {
+        this.playersAmount = res.playersAmount;
+        this.messagesAmount = res.messagesAmount;
       });
   }
 }
